@@ -1,0 +1,16 @@
+#uploadIcon svg path {
+  transition: none;
+}
+.dark-blue-gradient {
+  background-image: linear-gradient(to right bottom, #1a5d8a, #173560, #0f1035);
+}
+.blue-gradient {
+  background-image: linear-gradient(
+    to right bottom,
+    #6fbddb,
+    #4d8db3,
+    #3e709e,
+    #365486
+  );
+  
+}

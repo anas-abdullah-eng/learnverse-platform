@@ -1,0 +1,58 @@
+.darkMode-label {
+  width: 50px;
+  height: 20px;
+  position: relative;
+  background: #98e4f7;
+  border-radius: 20px;
+  box-shadow: inset 0px 5px 15px #0f10357f, inset 0px -5px 15px #98e4f7ac;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.darkMode-label:after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: -1.5px;
+  left: -1.5px;
+  background: linear-gradient(180deg, #dcf2f1, #8acbdb);
+  border-radius: 250px;
+  box-shadow: 3px 0px 5px #0f1035bb;
+  transition: 0.3s;
+}
+#darkmode-toggle {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+#darkmode-toggle:checked + .darkMode-label {
+  background: #0f1035;
+  box-shadow: inset 0px 5px 15px #72a3f86b, inset 0px -5px 15px #0f10359e;
+}
+#darkmode-toggle:checked + .darkMode-label:after {
+  left: 50.5px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, #365486, #0f1035);
+  box-shadow: -3px 0px 5px #98e4f740;
+}
+
+.darkMode-label svg {
+  position: absolute;
+  width: 16px;
+  top: 2px;
+  z-index: 100;
+}
+.darkMode-label svg.sun {
+  left: 3.5px;
+  fill: #0f1035;
+}
+.darkMode-label svg.moon {
+  right: 3px;
+  fill: #0f1035;
+}
+#darkmode-toggle:checked + .darkMode-label svg.sun {
+  fill: #98e4f7;
+}
+#darkmode-toggle:checked + .darkMode-label svg.moon {
+  fill: #98e4f7;
+}
