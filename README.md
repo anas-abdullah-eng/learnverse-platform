@@ -156,41 +156,9 @@ The platform integrates with a comprehensive backend API providing:
   <img src="docs/screenshots/dictionary.png" alt="Dictionary" width="400"/>
 </div>
 
-## 🤝 Contributing
-
-We welcome contributions to LearnVerse! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and development process.
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Authors
-
-- **Your Name** - *Initial work* - [YourGitHub](https://github.com/anas-abdullah-eng)
-
-## 🙏 Acknowledgments
-
-- Thanks to all contributors who have helped shape this project
-- Inspired by modern e-learning platforms and educational technology
-- Built with love for the English learning community
-
-## 📞 Support
-
-If you have any questions or need help, please:
-
-1. Check the [Issues](https://github.com/anas-abdullah-eng/learnverse-platform/issues) page
-2. Create a new issue if your problem isn't already reported
-3. Contact us at support@learnverse.com
-
----
 
 <div align="center">
   Made with ❤️ for English learners worldwide
