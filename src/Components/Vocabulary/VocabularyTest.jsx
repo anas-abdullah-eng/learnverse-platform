@@ -219,7 +219,6 @@ const VocabularyTest = ({ user, token }) => {
     return (
       <div className="min-h-screen bg-light dark:bg-slate-900 py-8">
         <div className="max-w-4xl mx-auto px-4">
-          {/* Header */}
           <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 mb-6">
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold text-dark dark:text-light">
@@ -233,7 +232,6 @@ const VocabularyTest = ({ user, token }) => {
               </div>
             </div>
             
-            {/* Progress Bar */}
             <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2 mb-4">
               <div
                 className="bg-primary h-2 rounded-full transition-all duration-300"
@@ -246,7 +244,6 @@ const VocabularyTest = ({ user, token }) => {
             </div>
           </div>
 
-          {/* Question */}
           <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8">
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-primary mb-2">
@@ -274,7 +271,6 @@ const VocabularyTest = ({ user, token }) => {
               ))}
             </div>
 
-            {/* Navigation */}
             <div className="flex justify-between">
               <button
                 onClick={handlePreviousQuestion}

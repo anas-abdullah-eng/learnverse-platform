@@ -20,6 +20,8 @@ import QuestionBankPage from "./Pages/QuestionBank/QuestionBankPage";
 import VideoManagerPage from "./Pages/VideoManager/VideoManagerPage";
 import DictionaryPage from "./Pages/Dictionary/DictionaryPage";
 import LovesListPage from "./Pages/LovesList/LovesListPage";
+import ContactPage from "./Pages/Contact/ContactPage";
+import AboutPage from "./Pages/About/AboutPage";
 
 const queryClient = new QueryClient();
 
@@ -114,6 +116,14 @@ function App() {
             <Route
               path="/loved-videos"
               element={<LovesListPage user={user} token={token} />}
+            />
+            <Route
+              path="/contact"
+              element={<ContactPage />}
+            />
+            <Route
+              path="/about-us"
+              element={<AboutPage />}
             />
 
             <Route path="*" element={<Error404 />} />

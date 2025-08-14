@@ -94,7 +94,6 @@ const Dictionary = ({ user, token }) => {
           </p>
         </div>
 
-        {/* Search Form */}
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 mb-8">
           <form onSubmit={handleSearch} className="mb-6">
             <div className="relative">
@@ -115,7 +114,6 @@ const Dictionary = ({ user, token }) => {
             </div>
           </form>
 
-          {/* Search History */}
           {searchHistory.length > 0 && (
             <div>
               <h3 className="text-sm font-semibold text-slate-600 dark:text-gray-400 mb-3 flex items-center">
@@ -137,7 +135,6 @@ const Dictionary = ({ user, token }) => {
           )}
         </div>
 
-        {/* Loading State */}
         {lookupWordMutation.isLoading && (
           <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
@@ -145,7 +142,6 @@ const Dictionary = ({ user, token }) => {
           </div>
         )}
 
-        {/* Search Results */}
         {currentResult && !lookupWordMutation.isLoading && (
           <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8">
             <div className="mb-8">
@@ -165,7 +161,6 @@ const Dictionary = ({ user, token }) => {
               </div>
             </div>
 
-            {/* Meanings */}
             <div className="space-y-8">
               {currentResult.meanings?.map((meaning, meaningIndex) => (
                 <div key={meaningIndex} className="border-l-4 border-primary pl-6">
@@ -217,7 +212,6 @@ const Dictionary = ({ user, token }) => {
           </div>
         )}
 
-        {/* No Results State */}
         {!currentResult && !lookupWordMutation.isLoading && searchHistory.length === 0 && (
           <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-12 text-center">
             <BookOpenIcon className="h-16 w-16 text-slate-400 mx-auto mb-4" />
@@ -230,7 +224,6 @@ const Dictionary = ({ user, token }) => {
           </div>
         )}
 
-        {/* Error State */}
         {lookupWordMutation.isError && (
           <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 text-center">
             <div className="text-red-500 mb-4">
@@ -240,7 +233,7 @@ const Dictionary = ({ user, token }) => {
               Word Not Found
             </h3>
             <p className="text-slate-500 dark:text-gray-400">
-              Sorry, we couldn't find the definition for that word. Please check the spelling and try again.
+              Sorry, we couldn&apos;t find the definition for that word. Please check the spelling and try again.
             </p>
           </div>
         )}

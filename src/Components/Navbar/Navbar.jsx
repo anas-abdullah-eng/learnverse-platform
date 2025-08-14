@@ -19,17 +19,35 @@ import {
   Bars3Icon,
   ChatBubbleOvalLeftEllipsisIcon,
   XMarkIcon,
+  ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { DarkModeButton } from "../DarkmodeComponent/DarkModeButton";
 
+// Dropdown menu items
+const languageToolsDropdown = [
+  { name: "Translator", href: "/translator" },
+  { name: "Grammar Checker", href: "/grammar-checker" },
+  { name: "Dictionary", href: "/dictionary" },
+];
+
+const assessmentDropdown = [
+  { name: "Online Test", href: "/online-test" },
+  { name: "Vocabulary Test", href: "/vocabulary-test" },
+];
+
+// Main navigation items (non-dropdown)
 const navigation = [
+  { name: "About US", href: "/about-us" },
+];
+
+// Mobile navigation (all items flat)
+const mobileNavigation = [
   { name: "Translator", href: "/translator" },
   { name: "Grammar Checker", href: "/grammar-checker" },
   { name: "Dictionary", href: "/dictionary" },
   { name: "Online Test", href: "/online-test" },
   { name: "Vocabulary Test", href: "/vocabulary-test" },
   { name: "About US", href: "/about-us" },
-  { name: "VerseChat", href: "https://messenger-3m7q.onrender.com/" },
 ];
 
 const teacherNavigation = [
@@ -53,8 +71,7 @@ const Navbar = ({ user, onLogout }) => {
           <>
             <div className="mx-auto max-w-7xl p-2 sm:p-6 lg:px-8">
               <div className="relative flex h-28 items-center justify-between">
-                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                  {/* Mobile menu button*/}
+                <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
                   <DisclosureButton className="relative inline-flex items-center justify-center rounded-md p-2 text-dark hover:bg-primary hover:text-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-light">
                     <span className="absolute -inset-0.5" />
                     <span className="sr-only">Open main menu</span>
@@ -65,7 +82,7 @@ const Navbar = ({ user, onLogout }) => {
                     )}
                   </DisclosureButton>
                 </div>
-                <div className="flex flex-1 items-center justify-center sm:justify-start">
+                <div className="flex flex-1 items-center justify-center lg:justify-start">
                   <div className="flex flex-shrink-0 items-center mr-7">
                     <Link to="/">
                       <img
@@ -75,8 +92,77 @@ const Navbar = ({ user, onLogout }) => {
                       />
                     </Link>
                   </div>
-                  <div className="hidden sm:ml-6 sm:block">
-                    <div className="flex space-x-4">
+                  <div className="hidden lg:ml-6 lg:block">
+                    <div className="flex space-x-2">
+                      <Menu as="div" className="relative">
+                        <MenuButton className="flex items-center text-dark hover:bg-dark hover:text-light dark:text-light dark:hover:bg-light dark:hover:text-dark rounded-md px-3 py-2 text-sm font-medium cursor-pointer">
+                          Language Tools
+                          <ChevronDownIcon className="ml-1 h-4 w-4" />
+                        </MenuButton>
+                        <Transition
+                          enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95"
+                          enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75"
+                          leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95"
+                        >
+                          <MenuItems className="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-md bg-white dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            {languageToolsDropdown.map((item) => (
+                              <MenuItem key={item.name}>
+                                {({ focus }) => (
+                                  <Link
+                                    to={item.href}
+                                    className={classNames(
+                                      focus ? "bg-light dark:bg-slate-700" : "",
+                                      location.pathname === item.href ? "bg-primary/10 text-primary" : "text-dark dark:text-light",
+                                      "block px-4 py-2 text-sm"
+                                    )}
+                                  >
+                                    {item.name}
+                                  </Link>
+                                )}
+                              </MenuItem>
+                            ))}
+                          </MenuItems>
+                        </Transition>
+                      </Menu>
+
+                   
+                      <Menu as="div" className="relative">
+                        <MenuButton className="flex items-center text-dark hover:bg-dark hover:text-light dark:text-light dark:hover:bg-light dark:hover:text-dark rounded-md px-3 py-2 text-sm font-medium cursor-pointer">
+                          Assessment Tools
+                          <ChevronDownIcon className="ml-1 h-4 w-4" />
+                        </MenuButton>
+                        <Transition
+                          enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95"
+                          enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75"
+                          leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95"
+                        >
+                          <MenuItems className="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-md bg-white dark:bg-slate-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            {assessmentDropdown.map((item) => (
+                              <MenuItem key={item.name}>
+                                {({ focus }) => (
+                                  <Link
+                                    to={item.href}
+                                    className={classNames(
+                                      focus ? "bg-light dark:bg-slate-700" : "",
+                                      location.pathname === item.href ? "bg-primary/10 text-primary" : "text-dark dark:text-light",
+                                      "block px-4 py-2 text-sm"
+                                    )}
+                                  >
+                                    {item.name}
+                                  </Link>
+                                )}
+                              </MenuItem>
+                            ))}
+                          </MenuItems>
+                        </Transition>
+                      </Menu>
+
                       {navigation.map((item) => (
                         <Link
                           key={item.name}
@@ -92,6 +178,7 @@ const Navbar = ({ user, onLogout }) => {
                           {item.name}
                         </Link>
                       ))}
+
                       {user?.role === "teacher" && teacherNavigation.map((item) => (
                         <Link
                           key={item.name}
@@ -111,7 +198,7 @@ const Navbar = ({ user, onLogout }) => {
                   </div>
                 </div>
                 {user ? (
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:pr-0">
                     {/* <button
                       type="button"
                       className="relative rounded-full bg-primary dark:bg-light p-1 text-light dark:text-dark hover:text-light focus:outline-none focus:ring-2 focus:ring-light focus:ring-offset-2 focus:ring-offset-dark"
@@ -124,7 +211,6 @@ const Navbar = ({ user, onLogout }) => {
                       />
                     </button> */}
 
-                    {/* Profile dropdown */}
                     <Menu as="div" className="relative ml-3">
                       <div>
                         <MenuButton className="relative flex rounded-full bg-dark text-sm focus:outline-none focus:ring-2 focus:ring-light focus:ring-offset-2 focus:ring-offset-dark">
@@ -231,20 +317,20 @@ const Navbar = ({ user, onLogout }) => {
               </div>
             </div>
 
-            <DisclosurePanel className="md:hidden">
+            <DisclosurePanel className="lg:hidden">
               <div className="space-y-1 px-2 pb-3 pt-2">
-                {navigation.map((item) => (
+                {mobileNavigation.map((item) => (
                   <DisclosureButton
                     key={item.name}
-                    as="a"
-                    href={item.href}
+                    as={Link}
+                    to={item.href}
                     className={classNames(
                       location.pathname === item.href
                         ? "bg-primary text-light"
                         : "text-dark hover:bg-dark hover:text-light dark:text-light dark:hover:bg-light dark:hover:text-dark ",
                       "block rounded-md px-3 py-2 text-base font-medium cursor-pointer"
                     )}
-                    aria-current={item.current ? "page" : undefined}
+                    aria-current={location.pathname === item.href ? "page" : undefined}
                   >
                     {item.name}
                   </DisclosureButton>

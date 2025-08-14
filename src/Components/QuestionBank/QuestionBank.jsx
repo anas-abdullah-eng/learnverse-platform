@@ -140,7 +140,6 @@ const QuestionBank = ({ user, token }) => {
           </p>
         </div>
 
-        {/* Level Selector */}
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 mb-8">
           <h2 className="text-xl font-semibold text-dark dark:text-light mb-4">
             Select Level
@@ -163,7 +162,6 @@ const QuestionBank = ({ user, token }) => {
           </div>
         </div>
 
-        {/* Add Question Form */}
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 mb-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-semibold text-dark dark:text-light flex items-center">
@@ -302,7 +300,6 @@ const QuestionBank = ({ user, token }) => {
             </form>
           )}
 
-          {/* Questions List */}
           <div className="space-y-4">
             {filteredQuestions.length === 0 ? (
               <div className="text-center py-12">

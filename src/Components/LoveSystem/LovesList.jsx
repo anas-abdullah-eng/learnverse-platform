@@ -106,7 +106,6 @@ const LoveVideoCard = ({ love, onRemove, isRemoving }) => {
   return (
     <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden">
       <div className="md:flex">
-        {/* Video Thumbnail */}
         <div className="md:w-1/3">
           <div className="relative bg-slate-200 dark:bg-slate-700 h-48 md:h-full flex items-center justify-center">
             <PlayIcon className="h-12 w-12 text-slate-400" />
@@ -116,7 +115,6 @@ const LoveVideoCard = ({ love, onRemove, isRemoving }) => {
           </div>
         </div>
 
-        {/* Video Info */}
         <div className="md:w-2/3 p-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">

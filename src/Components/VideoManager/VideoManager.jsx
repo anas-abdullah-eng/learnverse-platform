@@ -165,7 +165,6 @@ const VideoManager = ({ user, token }) => {
           </p>
         </div>
 
-        {/* Course Selector */}
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 mb-8">
           <h2 className="text-xl font-semibold text-dark dark:text-light mb-4">
             Select Course
@@ -208,7 +207,6 @@ const VideoManager = ({ user, token }) => {
               </button>
             </div>
 
-            {/* Add Video Form */}
             {showAddForm && (
               <form onSubmit={handleAddVideo} className="mb-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-lg">
                 <div className="mb-4">
@@ -246,7 +244,6 @@ const VideoManager = ({ user, token }) => {
               </form>
             )}
 
-            {/* Videos List */}
             <div className="space-y-4">
               {videos.length === 0 ? (
                 <div className="text-center py-12">
@@ -331,7 +328,6 @@ const VideoManager = ({ user, token }) => {
                           </div>
                         </div>
                         
-                        {/* Video Preview Placeholder */}
                         <div className="bg-slate-100 dark:bg-slate-700 rounded-lg p-8 text-center">
                           <VideoCameraIcon className="h-12 w-12 text-slate-400 mx-auto mb-2" />
                           <p className="text-slate-500 dark:text-gray-400">

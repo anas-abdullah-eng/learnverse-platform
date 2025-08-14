@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo_3x.png";
 
 import {
@@ -11,16 +12,40 @@ import {
 
 const sections = [
   {
-    title: "Home",
-    items: ["Popular Courses", "Recommended Courses", "Top Teachers"],
+    title: "Learning Tools",
+    items: [
+      { name: "Translator", link: "/translator" },
+      { name: "Grammar Checker", link: "/grammar-checker" },
+      { name: "Dictionary", link: "/dictionary" },
+      { name: "Online Test", link: "/online-test" },
+    ],
   },
   {
-    title: "Services",
-    items: ["Translator", "Grammar Checker", "Placement test"],
+    title: "Features",
+    items: [
+      { name: "Vocabulary Test", link: "/vocabulary-test" },
+      { name: "Loved Videos", link: "/loved-videos" },
+      { name: "Courses", link: "/" },
+      { name: "Teachers", link: "/" },
+    ],
   },
   {
-    title: "Courses",
-    items: ["Subscribed", "Favorite"],
+    title: "Support",
+    items: [
+      { name: "Contact Us", link: "/contact" },
+      { name: "Help Center", link: "/contact" },
+      { name: "FAQ", link: "/contact" },
+      { name: "Community", link: "/contact" },
+    ],
+  },
+  {
+    title: "Teacher Tools",
+    items: [
+      { name: "Question Bank", link: "/question-bank" },
+      { name: "Vocabulary Manager", link: "/vocabulary-manager" },
+      { name: "Video Manager", link: "/video-manager" },
+      { name: "Course Creation", link: "/" },
+    ],
   },
 ];
 
@@ -85,17 +110,19 @@ const Footer = () => {
         </path>
       </svg>
 
-      <div className="max-w-[1240px] mx-auto grid grid-cols-2 md:grid-cols-6 border-b-2 border-dark dark:border-light py-8 z-10">
+      <div className="md:px-0 px-10 max-w-[1240px] mx-auto grid grid-cols-2 md:grid-cols-6 border-b-2 border-dark dark:border-light py-8 z-10 relative">
         {sections.map((section, index) => (
           <div key={index}>
             <h6 className="font-bold uppercase pt-2">{section.title}</h6>
             <ul>
               {section.items.map((item, i) => (
-                <li
-                  key={i}
-                  className="py-1 text-dark dark:text-light hover:text-secondary"
-                >
-                  {item}
+                <li key={i} className="py-1">
+                  <Link
+                    to={item.link}
+                    className="text-dark dark:text-light hover:text-primary cursor-pointer transition-colors duration-200"
+                  >
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -114,7 +141,17 @@ const Footer = () => {
         <p className="py-4">2024 LearVerse. All rights reserved.</p>
         <div className="flex justify-between sm:w-[300px] pt-4 text-2xl">
           {items.map((x, index) => {
-            return <x.icon key={index} className="hover:text-light" />;
+            return (
+              <a
+                key={index}
+                href={x.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors duration-200"
+              >
+                <x.icon />
+              </a>
+            );
           })}
         </div>
       </div>

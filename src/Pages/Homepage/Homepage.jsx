@@ -5,15 +5,236 @@ import TopLikedCourse from "../../Components/CourseCard/TopLikedCourseCard";
 import CourseCard from "../../Components/CourseCard/CourseCard";
 import TeacherCard from "../../Components/TeacherCard/TeacherCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCards, EffectCoverflow, Navigation } from "swiper/modules";
+import { EffectCards, EffectCoverflow, Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import "./homepage.css";
-import { ArrowUpTrayIcon, PlusIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowUpTrayIcon,
+  PlusIcon,
+  LanguageIcon,
+  PencilSquareIcon,
+  BookOpenIcon,
+  ArrowRightIcon,
+  AcademicCapIcon,
+  UsersIcon,
+  PlayIcon,
+  StarIcon
+} from "@heroicons/react/24/outline";
 import { useAddCourse } from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
+
+// Hero Banner Component
+const HeroBanner = () => {
+  const heroSlides = [
+    {
+      id: 1,
+      heading: "Translate Text Instantly Anywhere",
+      subtitle: "Break language barriers with our advanced AI-powered translator supporting multiple languages for seamless communication worldwide.",
+      buttonText: "Start Translating",
+      buttonLink: "/translator",
+      icon: LanguageIcon,
+      bgGradient: "from-blue-600 to-purple-600",
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 2,
+      heading: "Perfect Grammar Every Single Time",
+      subtitle: "Enhance your writing with intelligent grammar checking that catches errors and suggests improvements for professional communication.",
+      buttonText: "Check Grammar",
+      buttonLink: "/grammar-checker",
+      icon: PencilSquareIcon,
+      bgGradient: "from-green-600 to-teal-600",
+      image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 3,
+      heading: "Discover Words Meanings Instantly Today",
+      subtitle: "Expand your vocabulary with comprehensive dictionary featuring definitions, pronunciations, examples, and synonyms for better learning.",
+      buttonText: "Explore Dictionary",
+      buttonLink: "/dictionary",
+      icon: BookOpenIcon,
+      bgGradient: "from-orange-600 to-red-600",
+      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    }
+  ];
+
+  return (
+    <div className="relative h-screen overflow-hidden">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 10000, disableOnInteraction: true }}
+        loop={true}
+        className="h-full"
+      >
+        {heroSlides.map((slide) => (
+          <SwiperSlide key={slide.id}>
+            <div className={`lg:px-36 lg:py-0 py-28 relative h-full bg-gradient-to-r ${slide.bgGradient} flex items-center`}>
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <defs>
+                    <pattern id={`pattern-${slide.id}`} x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <circle cx="10" cy="10" r="1" fill="white" opacity="0.3"/>
+                    </pattern>
+                  </defs>
+                  <rect width="100" height="100" fill={`url(#pattern-${slide.id})`}/>
+                </svg>
+              </div>
+
+              <div className="container mx-auto p-4 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div className="text-white space-y-6">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <slide.icon className="h-12 w-12 text-white/90" />
+                      <div className="h-12 w-1 bg-white/50"></div>
+                    </div>
+
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                      {slide.heading}
+                    </h1>
+
+                    <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl">
+                      {slide.subtitle}
+                    </p>
+
+                    <div className="pt-4">
+                      <Link
+                        to={slide.buttonLink}
+                        className="inline-flex items-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                      >
+                        {slide.buttonText}
+                        <ArrowRightIcon className="ml-2 h-5 w-5" />
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="relative">
+                    <div className="relative z-10 transform hover:scale-105 transition-transform duration-500">
+                      <img
+                        src={slide.image}
+                        alt={slide.heading}
+                        className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+                    </div>
+
+                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"></div>
+                    <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+};
+
+// About Section Component
+const AboutSection = () => {
+  return (
+    <section className="py-20 bg-light dark:bg-slate-900">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-dark dark:text-light mb-6">
+            Master English with LearnVerse
+          </h2>
+          <p className="text-xl text-slate-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Our comprehensive platform combines cutting-edge technology with proven educational methods
+            to help you achieve fluency in English through interactive courses, real-time feedback, and personalized learning paths.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <AcademicCapIcon className="h-8 w-8 text-primary" />
+            </div>
+            <h3 className="text-2xl font-bold text-dark dark:text-light mb-2">500+</h3>
+            <p className="text-slate-600 dark:text-gray-400">Interactive Lessons</p>
+          </div>
+
+          <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <UsersIcon className="h-8 w-8 text-secondary" />
+            </div>
+            <h3 className="text-2xl font-bold text-dark dark:text-light mb-2">10K+</h3>
+            <p className="text-slate-600 dark:text-gray-400">Active Students</p>
+          </div>
+
+          <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <PlayIcon className="h-8 w-8 text-green-500" />
+            </div>
+            <h3 className="text-2xl font-bold text-dark dark:text-light mb-2">200+</h3>
+            <p className="text-slate-600 dark:text-gray-400">Video Courses</p>
+          </div>
+
+          <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-16 h-16 bg-yellow-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <StarIcon className="h-8 w-8 text-yellow-500" />
+            </div>
+            <h3 className="text-2xl font-bold text-dark dark:text-light mb-2">4.9/5</h3>
+            <p className="text-slate-600 dark:text-gray-400">Student Rating</p>
+          </div>
+        </div>
+
+        <div className="p-2 sm:p-6 lg:px-36 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 className="text-3xl font-bold text-dark dark:text-light mb-6">
+              Why Choose LearnVerse?
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-4">
+                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-dark dark:text-light mb-1">Personalized Learning</h4>
+                  <p className="text-slate-600 dark:text-gray-400">AI-powered system adapts to your learning pace and style</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-dark dark:text-light mb-1">Expert Teachers</h4>
+                  <p className="text-slate-600 dark:text-gray-400">Learn from certified English instructors worldwide</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-dark dark:text-light mb-1">Interactive Tools</h4>
+                  <p className="text-slate-600 dark:text-gray-400">Grammar checker, translator, and dictionary at your fingertips</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="relative">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Students learning"
+              className="w-full h-96 object-cover rounded-2xl shadow-xl"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const HomePage = ({ user, duration = 15000 }) => {
   const { mutate: addCourse } = useAddCourse();
@@ -134,7 +355,15 @@ const HomePage = ({ user, duration = 15000 }) => {
     toggleModal();
   };
   return (
-    <div className="container mx-auto p-4 bg-light dark:bg-slate-800">
+    <div className="bg-light dark:bg-slate-800">
+    
+      <HeroBanner />
+
+     
+      <AboutSection />
+
+     
+      <div className="container mx-auto p-4">
       <div className="relative isolate px-6 lg:px-8">
         <div
           className="absolute inset-x-0 -top-10 -z-50 transform-gpu overflow-hidden blur-3xl sm:-top-10"
@@ -185,7 +414,6 @@ const HomePage = ({ user, duration = 15000 }) => {
                     <span className="sr-only">Close modal</span>
                   </button>
                 </div>
-                {/* Modal body */}
                 <div className="p-4 md:p-5">
                   <form className="space-y-4" onSubmit={handleAddCourseSubmit}>
                     <div>
@@ -476,16 +704,48 @@ const HomePage = ({ user, duration = 15000 }) => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
               />
             </svg>
           </button>
         </div>
       )}
+
+      <section className="py-20 bg-gradient-to-r from-primary to-secondary">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Start Your English Journey?
+            </h2>
+            <p className="text-xl text-white/90 mb-8 leading-relaxed">
+              Join thousands of students who have transformed their English skills with LearnVerse.
+              Get personalized support and guidance from our expert team.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link
+                to="/contact"
+                className="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Contact Us Today
+                <ArrowRightIcon className="ml-2 h-5 w-5" />
+              </Link>
+              <Link
+                to="/online-test"
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transform hover:scale-105 transition-all duration-300"
+              >
+                Take Free Test
+                <AcademicCapIcon className="ml-2 h-5 w-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
+   </div>
+
   );
 };
 

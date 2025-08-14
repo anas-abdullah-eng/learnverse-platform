@@ -306,7 +306,6 @@ export default function CourseDetailsPage({ user }) {
                   <span className="sr-only">Close modal</span>
                 </button>
               </div>
-              {/* Modal body */}
               <div className="p-4 md:p-5">
                 <form className="space-y-4" onSubmit={handleAddCourseSubmit}>
                   <div>
