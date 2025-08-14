@@ -150,10 +150,10 @@ The platform integrates with a comprehensive backend API providing:
 ## 📱 Screenshots
 
 <div align="center">
-  <img src="docs/screenshots/homepage.png" alt="Homepage" width="400"/>
-  <img src="docs/screenshots/online-test.png" alt="Online Test" width="400"/>
+  <img src="docs/screenshots/Homepage.png" alt="Homepage" width="400"/>
+  <img src="docs/screenshots/Online-test.png" alt="Online Test" width="400"/>
   <img src="docs/screenshots/Translator.png" alt="Translator" width="400"/>
-  <img src="docs/screenshots/dictionary.png" alt="Dictionary" width="400"/>
+  <img src="docs/screenshots/Dictionary.png" alt="Dictionary" width="400"/>
 </div>
 
 ## 📄 License
